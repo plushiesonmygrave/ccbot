@@ -32,15 +32,20 @@ module.exports = {
 			entry = await models.Server.findOne({ where: { serverId: id } });
 			if (entry) return require('./admin/get/server').execute(interaction, entry);
 
-			entry = await models.Server.findAll({ where: { guildId: id } });
+			entry = await models.Server.findAll({ where: { guildId: id, botLeave: null } });
 			if (entry) return require('./admin/get/guild').execute(interaction, entry);
 
 			entry = await models.User.findOne({ where: { userId: id } });
 			if (entry) return require('./admin/get/user').execute(interaction, entry);
 
 			entry = await models.UserBan.findOne({ where: { banId: id } });
-			if (entry) return require('./admin/get/userban').execute(interaction, entry);
+			if (entry) return require('./admin/get/userban.js').execute(interaction, entry);
+
+			return database.reply(interaction, 'INVALID_ID');
 		}
+		case 'stats': return require('./admin/stats').execute(interaction);
+		case 'log': return require('./admin/log.js').execute(interaction);
+		case 'list': return require('./admin/list.js').execute(interaction);
 		}
 	},
 };
