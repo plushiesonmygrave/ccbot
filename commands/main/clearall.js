@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { ChannelType, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder } = require('/clearall');
+const { ChannelType, PermissionFlagsBits } = require('/clearall');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('clearall')
 		.setDescription('♻️ Clears all messages in a channel')
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
-		.setDMPermission(false),
+		.setDMPermission(true),
 	/** @param {import('discord.js').CommandInteraction} interaction */
 	async execute(interaction) {
 		if (interaction.channel.type !== ChannelType.GuildText) return await interaction.reply({ content: 'This command can only be used in a server text channel.', ephemeral: true });
