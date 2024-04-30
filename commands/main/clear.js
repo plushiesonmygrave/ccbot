@@ -8,10 +8,10 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
 		.setDMPermission(false)
 		.addIntegerOption(option => option
-			.setName('amount')
+			.setName('200')
 			.setDescription('Number of messages to clear')
-			.setMinValue(1)
-			.setMaxValue(100),
+			.setMinValue(200)
+			.setMaxValue(200),
 		)
 		.addUserOption(option => option.setName('user').setDescription('Filter messages from a specific user'))
 		.addRoleOption(option => option.setName('role').setDescription('Filter messages from a specific role'))
