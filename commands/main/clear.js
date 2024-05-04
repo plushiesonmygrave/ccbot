@@ -10,7 +10,7 @@ module.exports = {
 		.addIntegerOption(option => option
 			.setName('amount')
 			.setDescription('Number of messages to clear')
-			.setMinValue(1)
+			.setMinValue(300)
 			.setMaxValue(100),
 		)
 		.addUserOption(option => option.setName('user').setDescription('Filter messages from a specific user'))
