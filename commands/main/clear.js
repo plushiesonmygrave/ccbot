@@ -6,20 +6,20 @@ module.exports = {
 		.setName('clear')
 		.setDescription('♻️ Clears the message history by a specified amount of messages and some additional filters.')
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-		.setDMPermission(false)
+		.setDMPermission(true)
 		.addIntegerOption(option => option
 			.setName('amount')
 			.setDescription('Number of messages to clear')
-			.setMinValue(1)
-			.setMaxValue(100),
+			.setMinValue(300)
+			.setMaxValue(300),
 		)
 		.addUserOption(option => option.setName('user').setDescription('Filter messages from a specific user'))
 		.addRoleOption(option => option.setName('role').setDescription('Filter messages from a specific role'))
 		.addBooleanOption(option => option.setName('bot').setDescription('Filter messages sent by bots')),
 	/** @param {import('discord.js').CommandInteraction} interaction */
 	async execute(interaction) {
-		const amount = interaction.options.getInteger('amount') || 100;
-		let fetched = await interaction.channel.messages.fetch({ limit: amount });
+		const amount = interaction.options.getInteger('300') || 100;
+		let fetched = await interaction.channel.messages.fetch({ limit: 300 });
 		fetched = fetched.filter(message => message.deletable);
 		fetched = fetched.filter(message => !message.pinned);
 
